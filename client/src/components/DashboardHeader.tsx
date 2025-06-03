@@ -1,11 +1,10 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from '../assets/text-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { authService } from '../api/api'
 
-const DashboardHeader: React.FC = () => {
+const DashboardHeader = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -19,7 +18,7 @@ const DashboardHeader: React.FC = () => {
         button_container: 'flex items-center gap-4',
         profile_btn: 'hover:scale-110 text-3xl text-white bg-indigo-500 hover:bg-indigo-600 rounded-full w-15 h-15 transition-all',
         logout_btn: 'flex items-center gap-2 px-4 py-2 text-white bg-red-500 hover:bg-red-600 rounded-lg transition-colors'
-    }
+    } as const;
 
     return (
         <header className={styles.container}>

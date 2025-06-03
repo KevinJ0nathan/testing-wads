@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
@@ -14,8 +13,12 @@ import CustStaffDashboard from './pages/CustStaffDashboard'
 import OTPVerification from './pages/OTPVerification'
 import TicketAppScreen from './pages/TicketAppScreen';
 
+interface User {
+  id?: string;
+}
+
 function App() {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const user = JSON.parse(localStorage.getItem("user") || "{}") as User;
   console.log(localStorage.getItem("user"));
   const ownerId = user?.id || null;
   return (

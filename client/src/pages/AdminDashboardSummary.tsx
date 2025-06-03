@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { AlertCircle, CheckCircle, Clock, Users, TrendingUp, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -24,6 +24,14 @@ interface SummaryNavOption {
   status?: StatusType | 'all' | null | 'summary';
 }
 
+interface StatCardProps {
+  icon: React.ComponentType<{ size: number }>;
+  title: string;
+  value: number;
+  subtitle?: string;
+  color?: 'blue' | 'green' | 'yellow' | 'red' | 'gray';
+}
+
 const AdminDashboardSummary = () => {
   const navigate = useNavigate();
   const [tickets, setTickets] = useState<ITicket[]>([]);
@@ -47,7 +55,7 @@ const AdminDashboardSummary = () => {
   }, []);
 
   // Process ticket data for charts
-  const ticketStatusData = React.useMemo(() => {
+  const ticketStatusData = useMemo(() => {
     const statusCounts = tickets.reduce((acc, ticket) => {
       acc[ticket.status] = (acc[ticket.status] || 0) + 1;
       return acc;
@@ -60,7 +68,7 @@ const AdminDashboardSummary = () => {
     ];
   }, [tickets]);
 
-  const priorityData = React.useMemo(() => {
+  const priorityData = useMemo(() => {
     const priorityCounts = tickets.reduce((acc, ticket) => {
       acc[ticket.priority] = (acc[ticket.priority] || 0) + 1;
       return acc;
@@ -73,7 +81,7 @@ const AdminDashboardSummary = () => {
     ];
   }, [tickets]);
 
-  const categoryData = React.useMemo(() => {
+  const categoryData = useMemo(() => {
     const categoryCounts = tickets.reduce((acc, ticket) => {
       acc[ticket.type] = (acc[ticket.type] || 0) + 1;
       return acc;
@@ -117,14 +125,14 @@ const AdminDashboardSummary = () => {
     },
   ];
 
-  const StatCard = ({ icon: Icon, title, value, subtitle, color = 'blue' }) => {
+  const StatCard = ({ icon: Icon, title, value, subtitle, color = 'blue' }: StatCardProps) => {
     const colorClasses = {
       blue: 'bg-blue-50 text-blue-600 border-blue-200',
       green: 'bg-green-50 text-green-600 border-green-200',
       yellow: 'bg-yellow-50 text-yellow-700 border-yellow-200',
       red: 'bg-red-50 text-red-600 border-red-200',
       gray: 'bg-gray-50 text-gray-600 border-gray-200'
-    };
+    } as const;
 
     return (
       <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
@@ -203,9 +211,9 @@ const AdminDashboardSummary = () => {
           />
           <StatCard
             icon={AlertCircle}
-            title="High Priority"
-            value={tickets.filter(ticket => ticket.priority === 'High').length}
-            subtitle="Needs attention"
+            title="Unseen"
+            value={tickets.filter(ticket => ticket.status === 'Unseen').length}
+            subtitle="Pending review"
             color="red"
           />
         </div>

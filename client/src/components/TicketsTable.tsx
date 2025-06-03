@@ -1,18 +1,18 @@
-import React from 'react'
 import StatusDisplay from './StatusDisplay'
-import { Ticket } from '../../../server/models/TicketModel'
+import { ITicket } from '../types/ticket'
 
 interface Props {
-    data: Ticket[]
+    data: ITicket[]
 }
 
-const TicketsTable:React.FC<Props> = ({ data }) => {
+const TicketsTable = ({ data }: Props) => {
     const styles = {
         table: 'table-fixed w-full',
         thead: 'border-b px-5 py-2 text-left bg-gray-100',
         tbody: 'text-sm px-5 py-2',
         trow: 'border-b-1 hover:bg-indigo-100 cursor-pointer transition-colors',
-    }
+    } as const;
+
     return (
         <div>
             <table className={styles.table}>
@@ -25,17 +25,14 @@ const TicketsTable:React.FC<Props> = ({ data }) => {
                     </tr>
                 </thead>
                 <tbody className={styles.tbody}>
-                    { data.map((ticket) => {
-                        return (
-                            <tr className={styles.trow}>
-                                <td className={styles.tbody}>{ticket.id}</td>
-                                <td className={styles.tbody}>{ticket.title}</td>
-                                <td className={styles.tbody}>{ticket.type}</td>
-                                <td className={styles.tbody}><StatusDisplay status={ticket.status} /></td>
-                            </tr>
-                        )
-                    })
-                    }
+                    {data.map((ticket) => (
+                        <tr key={ticket.ticket_id} className={styles.trow}>
+                            <td className={styles.tbody}>{ticket.ticket_id}</td>
+                            <td className={styles.tbody}>{ticket.title}</td>
+                            <td className={styles.tbody}>{ticket.type}</td>
+                            <td className={styles.tbody}><StatusDisplay status={ticket.status} /></td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

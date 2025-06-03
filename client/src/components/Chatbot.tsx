@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import ToothIcon from "../assets/tooth_vector.png";
+import { useEffect } from "react";
 
 declare global {
     interface Window {

@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import "./TicketAppScreen.css";
 import { ticketService } from "../api/api";
@@ -10,7 +10,11 @@ interface TicketFormData {
     description: string;
 }
 
-const TicketAppScreen = () => {
+interface Props {
+    ownerId: string | null;
+}
+
+const TicketAppScreen = ({ ownerId }: Props) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState<TicketFormData>({
         title: "",
@@ -34,22 +38,11 @@ const TicketAppScreen = () => {
         setLoading(true);
 
         try {
-            // Get the token from localStorage or sessionStorage
-            const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-            if (!token) {
+            if (!ownerId) {
                 setError("Please sign in to submit a ticket");
                 setLoading(false);
                 return;
             }
-
-            // Decode the JWT token to get user information
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join(''));
-
-            const { id: ownerId } = JSON.parse(jsonPayload);
 
             // Submit the ticket
             const ticketData: CreateTicketPayload = {

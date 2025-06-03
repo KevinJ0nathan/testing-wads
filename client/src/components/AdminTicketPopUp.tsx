@@ -1,27 +1,29 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, Calendar, AlertCircle, User, FileText, Settings, Mail } from 'lucide-react';
 import { PriorityType, StatusType } from "../../../server/models/TicketModel";
 import { ticketService } from '../api/api';
 
+interface TicketData {
+  id: string;
+  ownerId: string;
+  title: string;
+  description: string;
+  assignee: string;
+  type: string;
+  dateCreated: string;
+  priority: PriorityType;
+  status: StatusType;
+}
+
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  ticket: {
-    id: string;
-    ownerId: string;
-    title: string;
-    description: string;
-    assignee: string;
-    type: string;
-    dateCreated: string;
-    priority: PriorityType;
-    status: StatusType;
-  };
+  ticket: TicketData;
   onUpdate?: (ticketId: string, updates: { status?: StatusType; priority?: PriorityType; assignee?: string }) => Promise<void>;
   onDelete?: (ticketId: string) => Promise<void>;
 }
 
-const AdminTicketPopUp: React.FC<Props> = ({ isOpen, onClose, ticket, onUpdate, onDelete }) => {
+const AdminTicketPopUp = ({ isOpen, onClose, ticket, onUpdate, onDelete }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedStatus, setEditedStatus] = useState<StatusType>(ticket.status);
   const [editedPriority, setEditedPriority] = useState<PriorityType>(ticket.priority);
@@ -33,7 +35,7 @@ const AdminTicketPopUp: React.FC<Props> = ({ isOpen, onClose, ticket, onUpdate, 
   const [emailError, setEmailError] = useState('');
   const [emailSuccess, setEmailSuccess] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     setEditedStatus(ticket.status);
     setEditedPriority(ticket.priority);
     setEditedAssignee(ticket.assignee);

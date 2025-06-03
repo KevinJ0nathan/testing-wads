@@ -1,4 +1,3 @@
-import React from "react";
 import AdminTicket from "./AdminTicket";
 import { ITicket } from "../types/ticket";
 
@@ -7,7 +6,7 @@ interface Props {
   onRefresh?: () => void;
 }
 
-const AdminTable: React.FC<Props> = ({ data, onRefresh }) => {
+const AdminTable = ({ data, onRefresh }: Props) => {
 
   const tickets = data 
 

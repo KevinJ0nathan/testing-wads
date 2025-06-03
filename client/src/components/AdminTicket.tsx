@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { PriorityType, StatusType, ITicket } from "../../../server/models/TicketModel";
 import PriorityDisplay from "./PriorityDisplay";
 import StatusDisplay from "./StatusDisplay";
@@ -9,7 +9,7 @@ interface Props extends ITicket {
   onTicketUpdate?: () => void;
 }
 
-const AdminTicket: React.FC<Props> = ({
+const AdminTicket = ({
   ticket_id,
   owner_id,
   title,
@@ -20,7 +20,7 @@ const AdminTicket: React.FC<Props> = ({
   priority,
   status,
   onTicketUpdate,
-}) => {
+}: Props) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const styles = {
