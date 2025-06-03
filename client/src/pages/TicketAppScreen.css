@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jersey+10&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.top_container {
+    /* background: linear-gradient(to bottom, #6D4CFF 0%, #6D4CFF 50%,white 50%, white 100%); */
+    background-color:#6D4CFF;
+    height: 150px;  
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.text {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-family: "Jersey 10";
+    margin-top: -30px;
+}
+
+
+.logo {
+    width: 35px;
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.name {
+    display: flex;
+    flex-direction: row;
+}
+
+.name h2 {
+    color: white;
+    font-family: "Inter";
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+
+.bottom_container {
+    margin-top: 170px;
+}
+
+.what {
+    text-align: center;
+    font-family: "Inter";
+    font-weight: bold;
+    font-size: 25px;
+}
+.send {
+    text-align: center;
+    font-weight: lighter;
+    font-size: 15px;
+    font-family: "Inter";
+    margin-top: -5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+label {
+    font-family: "Poppins";
+}
+input, textarea, select {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cancel_btn, .send_btn {
+    margin: 10px;
+    padding: 10px;
+    width: 100px;
+    border-radius: 10px;
+}
+.send_btn {
+    background-color: #6D4CFF;
+}
+.cancel_btn {
+    background-color: #848484;
+}
+.cancel_btn, .send_btn:hover {
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+option {
+    font-family: "Inter";
+}
