@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./TicketAppScreen.css";
 import { ticketService } from "../api/api";
 import type { CreateTicketPayload } from "../api/api";
-import logoPng from "../../assets/logo.png";
+import logoPng from "../assets/logo.png";
 
 interface TicketFormData {
     title: string;
