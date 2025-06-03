@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { Search, Filter, User, Calendar, ArrowLeft, Plus, Menu, X } from 'lucide-react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
+import { Search, Filter, Calendar, ArrowLeft, Plus, } from 'lucide-react';
 import DashboardHeader from '../components/DashboardHeader';
 import { ticketService } from '../api/api';
 import { useNavigate } from "react-router-dom";
@@ -34,11 +34,9 @@ const CustomerDashboard = () => {
   const [activeTab, setActiveTab] = useState('All Tickets');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showMobileTicketDetails, setShowMobileTicketDetails] = useState(false);
   const [showPriorityFilterDropdown, setShowPriorityFilterDropdown] = useState(false);
   const [selectedPriorityFilter, setSelectedPriorityFilter] = useState<string | null>(null);
-  const [showCreateTicketModal, setShowCreateTicketModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -114,7 +112,7 @@ const CustomerDashboard = () => {
     return filtered;
   }, [tickets, activeTab, searchQuery, selectedPriorityFilter]);
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case 'Completed':
         return 'text-green-600 bg-green-50 border-green-200';
@@ -125,7 +123,7 @@ const CustomerDashboard = () => {
     }
   };
 
-  const getPriorityColor = (priority) => {
+  const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'High':
         return 'text-red-600 bg-red-50 border-red-200';
@@ -138,7 +136,7 @@ const CustomerDashboard = () => {
     }
   };
 
-  const handleMobileTicketSelect = (ticket) => {
+  const handleMobileTicketSelect = (ticket: Ticket) => {
     setSelectedTicket(ticket);
     setShowMobileTicketDetails(true);
   };
@@ -149,7 +147,6 @@ const CustomerDashboard = () => {
 
   const handleCreateTicket = () => {
     // TODO: Implement create ticket functionality
-    setShowCreateTicketModal(true);
     navigate("/createticket");
 
   };
