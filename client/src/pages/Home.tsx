@@ -5,6 +5,10 @@ import Chatbot from '../components/Chatbot'
 
 import { useNavigate } from 'react-router-dom'
 import CertificationObject from '../components/CertificationObject'
+import React from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSquareFacebook, faSquareInstagram, faSquareXTwitter, faSquareYoutube } from "@fortawesome/free-brands-svg-icons"
+import melindaJpg from "../assets/melinda.jpg"
 
 function Home() {
     const certifications = [
@@ -18,7 +22,7 @@ function Home() {
             img: "src/assets/logo-damonsmile.png",
             title: "Certified Damon System Clinic",
             subtitle: "At Dentalign, we also specialize in Damon System treatment for all our customers.",
-            desc: "The Damon System is not just about revolutionary braces and wires, it’s a whole new way of treating patients. Traditional treatment often requires removal of healthy teeth and/or the use of palatal expanders to make space. This approach is often uncomfortable, takes longer, and can leave a narrower arch and a flat profile. Damon smiles are full, natural 10-tooth smiles achieved with light biologically-sensible forces, and are specifically designed to improve the overall facial result of each patient.",
+            desc: "The Damon System is not just about revolutionary braces and wires, it's a whole new way of treating patients. Traditional treatment often requires removal of healthy teeth and/or the use of palatal expanders to make space. This approach is often uncomfortable, takes longer, and can leave a narrower arch and a flat profile. Damon smiles are full, natural 10-tooth smiles achieved with light biologically-sensible forces, and are specifically designed to improve the overall facial result of each patient.",
         },
         
     ]
@@ -64,11 +68,11 @@ function Home() {
                 <section className={styles.section + "bg-white"}>
                     <div className={styles.about_container}>
                         <div className={styles.about_img}>
-                            <img src="src/assets/melinda.jpg" alt="" />
+                            <img src={melindaJpg} alt="" />
                         </div>
                         <div>
                             <h1 className={styles.about_title}>Dr. Melinda</h1>
-                            <p className={styles.about_desc}>Dr. Melinda has developed a great reputation as a family dentist. She is also very passionate about dentistry and understands the importance of offering quality dental care to both adults and children. She will ensure you receive the highest standards of dental care in a good communication so patient will understand why it’s important and how to maintain oral hygiene.</p>
+                            <p className={styles.about_desc}>Dr. Melinda has developed a great reputation as a family dentist. She is also very passionate about dentistry and understands the importance of offering quality dental care to both adults and children. She will ensure you receive the highest standards of dental care in a good communication so patient will understand why it's important and how to maintain oral hygiene.</p>
                         </div>
                     </div>
                 </section>

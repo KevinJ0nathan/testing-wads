@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService, ApiErrorResponse } from "../api/api";
 import { AxiosError } from "axios";
+import toothVector from "../assets/tooth_vector.png";
 
 const OTPVerification: React.FC = () => {
   const navigate = useNavigate();
@@ -108,7 +109,7 @@ const OTPVerification: React.FC = () => {
         {/* Left Panel */}
         <div className="w-full md:w-1/2 bg-[#7B4BFF] p-6 sm:p-8 md:p-10 text-white sm:flex hidden flex-col justify-start items-center md:items-start text-center md:text-left">
           <div className="flex items-center mb-6">
-            <img src="src/assets/tooth_vector.png" alt="Dentalign Logo" className="h-6 sm:h-7 md:h-8 mr-2" />
+            <img src={toothVector} alt="Dentalign Logo" className="h-6 sm:h-7 md:h-8 mr-2" />
             <span className="text-xl sm:text-2xl font-bold">Dentalign</span>
           </div>
 

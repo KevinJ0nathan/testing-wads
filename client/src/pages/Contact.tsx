@@ -1,6 +1,8 @@
+import React from 'react';
 import HeaderBar from '../components/HeaderBar'
 import Jumbotron from '../components/Jumbotron'
 import FooterContent from '../components/FooterContent'
+import textLogoPng from "../assets/text-logo.png";
 
 function Contact() {
     const styles = {
@@ -20,7 +22,11 @@ function Contact() {
             </header>
             <main>
                 <section>
-                    <img src="src/assets/text-logo.png" alt="" />
+                    <div className="w-full text-center">
+                        <img src={textLogoPng} alt="" />
+                        <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+                        <p className="text-lg text-gray-700 mb-8">Have questions? Fill out the form below or reach out to us directly.</p>
+                    </div>
                 </section>
                 <section className={styles.section}>
                     <form className={styles.form} action="">
